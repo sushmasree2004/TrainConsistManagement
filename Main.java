@@ -1,56 +1,68 @@
-
+package com.Train;
 
 /*
-
- * Use Case 15: Safe Cargo Assignment Using try-catch-finally
-
+ * Use Case 18: Linear Search for Bogie ID
+ 
  *
  * Description:
  * 
- * This class validates cargo assignment at runtime
- * and handles unsafe assignments gracefully using
- * structured exception handling.
+ * This class searches for a specific bogie ID
+ * in an unsorted list using Linear Search.
  *
  * At this stage, the application:
  * 
- * - Defines a custom runtime exception CargoSafetyException
- * - Attempts cargo assignment
- * - Throws exception if unsafe
- * - Catches exception to display error
- * - Executes finally block for logging
+ * - Creates an array of bogie IDs
+ * - Accepts a search key
+ * - Traverses sequentially
+ * - Compares each element
+ * - Stops when a match is found
  *
 
  *
  * @author B.Sushma Sree
- * @version 15.0
+ * @version 18.0
  */
 
-import java.util.*;
-
-class CargoSafetyException extends RuntimeException 
-{
-    public CargoSafetyException(String message) 
-    {
-        super(message);
-        
-    }
-}
-
+import java.util.Scanner;
 
 public class Main 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
         
-        System.out.println("UC15 - Safe Cargo Assignment");
-       
+        System.out.println("UC18 - Linear Search for Bogie ID");
+ 
 
-        GoodsBogie cylindrical = new GoodsBogie("Cylindrical");
-        cylindrical.assignCargo("Petroleum"); //  safe
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        GoodsBogie rectangular = new GoodsBogie("Rectangular");
-        rectangular.assignCargo("Petroleum"); //  unsafe
+        System.out.println("Available Bogie IDs:");
+        for (String id : bogieIds) 
+        {
+            System.out.println(id);
+        }
 
-       
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nEnter Bogie ID to search: ");
+        
+        String searchKey = sc.nextLine();
+
+        boolean found = false;
+        for (String id : bogieIds) 
+        {
+            if (id.equals(searchKey)) 
+            {
+                System.out.println("\nBogie " + searchKey + " found in train consist.");
+                found = true;
+                break; 
+            }
+        }
+
+        if (!found) 
+        {
+            System.out.println("\nBogie " + searchKey + " not found in train consist.");
+        }
+
+      
+        sc.close();
     }
 }
