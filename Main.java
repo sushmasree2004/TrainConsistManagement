@@ -1,78 +1,56 @@
 
 
 /*
- * ============================================================
- * Use Case 13: Performance Comparison (Loops vs Streams)
- * ============================================================
+
+ * Use Case 15: Safe Cargo Assignment Using try-catch-finally
+
  *
  * Description:
- * This class compares execution time of loop-based
- * versus stream-based filtering logic using nanoTime().
+ * 
+ * This class validates cargo assignment at runtime
+ * and handles unsafe assignments gracefully using
+ * structured exception handling.
  *
  * At this stage, the application:
- * - Creates a list of bogies
- * - Measures loop execution time
- * - Measures stream execution time
- * - Displays both results
+ * 
+ * - Defines a custom runtime exception CargoSafetyException
+ * - Attempts cargo assignment
+ * - Throws exception if unsafe
+ * - Catches exception to display error
+ * - Executes finally block for logging
  *
- * This maps performance benchmarking using nanoTime().
+
  *
  * @author B.Sushma Sree
- * @version 13.0
+ * @version 15.0
  */
 
 import java.util.*;
-import java.util.stream.*;
 
+class CargoSafetyException extends RuntimeException 
+{
+    public CargoSafetyException(String message) 
+    {
+        super(message);
+        
+    }
+}
 
 
 public class Main 
 {
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
-        List<Bogie> bogies = Arrays.asList(
-            new Bogie("Sleeper", 72),
-            new Bogie("AC Chair", 56),
-            new Bogie("First Class", 24),
-            new Bogie("Sleeper", 70),
-            new Bogie("AC Chair", 60)
-        );
+        
+        System.out.println("UC15 - Safe Cargo Assignment");
+       
 
+        GoodsBogie cylindrical = new GoodsBogie("Cylindrical");
+        cylindrical.assignCargo("Petroleum"); //  safe
 
-        System.out.println("UC13 - Performance Comparison (Loops vs Streams)");
-        
+        GoodsBogie rectangular = new GoodsBogie("Rectangular");
+        rectangular.assignCargo("Petroleum"); //  unsafe
 
-        // Loop-based filtering
-        
-        long loopStart = System.nanoTime();
-        
-        List<Bogie> loopFiltered = new ArrayList<>();
-        
-        for (Bogie b : bogies) 
-        {
-            if (b.capacity > 60) 
-            {
-                loopFiltered.add(b);
-            }
-        }
-        
-        long loopEnd = System.nanoTime();
-        
-        long loopTime = loopEnd - loopStart;
-
-        // Stream-based filtering
-        
-        long streamStart = System.nanoTime();
-        
-        List<Bogie> streamFiltered = bogies.stream()
-            .filter(b -> b.capacity > 60)
-            .collect(Collectors.toList());
-        
-        long streamEnd = System.nanoTime();
-        long streamTime = streamEnd - streamStart;
-
-        System.out.println("Loop Execution Time (ns): " + loopTime);
-        System.out.println("Stream Execution Time (ns): " + streamTime);
-
+       
     }
 }

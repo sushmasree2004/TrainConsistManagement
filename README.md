@@ -1,20 +1,25 @@
+
 /*
 
- * Use Case 13: Performance Comparison (Loops vs Streams)
+ * Use Case 15: Safe Cargo Assignment Using try-catch-finally
 
  *
  * Description:
- * This class compares execution time of loop-based
- * versus stream-based filtering logic using nanoTime().
+ * 
+ * This class validates cargo assignment at runtime
+ * and handles unsafe assignments gracefully using
+ * structured exception handling.
  *
  * At this stage, the application:
- * - Creates a list of bogies
- * - Measures loop execution time
- * - Measures stream execution time
- * - Displays both results
+ * 
+ * - Defines a custom runtime exception CargoSafetyException
+ * - Attempts cargo assignment
+ * - Throws exception if unsafe
+ * - Catches exception to display error
+ * - Executes finally block for logging
  *
- * This maps performance benchmarking using nanoTime().
+
  *
  * @author B.Sushma Sree
- * @version 13.0
+ * @version 15.0
  */
