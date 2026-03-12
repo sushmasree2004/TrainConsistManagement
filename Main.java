@@ -1,55 +1,67 @@
 
-
 /*
 
- * Use Case 15: Safe Cargo Assignment Using try-catch-finally
+ * Use Case 16: Sort Passenger Bogies by Capacity (Bubble Sort)
 
  *
  * Description:
  * 
- * This class validates cargo assignment at runtime
- * and handles unsafe assignments gracefully using
- * structured exception handling.
+ * This class sorts passenger bogie capacities using
+ * the Bubble Sort algorithm instead of library methods.
  *
  * At this stage, the application:
  * 
- * - Defines a custom runtime exception CargoSafetyException
- * - Attempts cargo assignment
- * - Throws exception if unsafe
- * - Catches exception to display error
- * - Executes finally block for logging
+ * - Creates an array of bogie capacities
+ * - Iterates with nested loops
+ * - Compares adjacent values
+ * - Swaps values if out of order
+ * - Displays sorted result
  *
 
  *
  * @author B.Sushma Sree
- * @version 15.0
+ * @version 16.0
  */
-
-import java.util.*;
-
-class CargoSafetyException extends RuntimeException 
-{
-    public CargoSafetyException(String message) 
-    {
-        super(message);
-        
-    }
-}
-
 
 public class Main 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
+      
+        System.out.println("UC16 - Sort Passenger Bogies by Capacity");
         
-        System.out.println("UC15 - Safe Cargo Assignment");
-       
 
-        GoodsBogie cylindrical = new GoodsBogie("Cylindrical");
-        cylindrical.assignCargo("Petroleum"); //  safe
+        int[] capacities = {72, 56, 24, 70, 60};
 
-        GoodsBogie rectangular = new GoodsBogie("Rectangular");
-        rectangular.assignCargo("Petroleum"); //  unsafe
+        System.out.println("Original Capacities:");
+        for (int c : capacities) 
+        {
+            System.out.print(c + " ");
+        }
+        
+        System.out.println();
+
+        // Bubble Sort Algorithm
+        for (int i = 0; i < capacities.length - 1; i++) 
+        {
+            for (int j = 0; j < capacities.length - i - 1; j++) 
+            {
+                if (capacities[j] > capacities[j + 1]) 
+                {
+                    // Swap
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("\nSorted Capacities :");
+        
+        for (int c : capacities) 
+        {
+            System.out.print(c + " ");
+        }
 
        
     }
