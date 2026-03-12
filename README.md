@@ -1,24 +1,20 @@
-# TrainConsistManagement
-
 /*
- *
- * Use Case 10: Count Total Seats in Train
- *
+
+ * Use Case 13: Performance Comparison (Loops vs Streams)
+
  *
  * Description:
- * This class aggregates seating capacities of all bogies
- * into a single total value using Java Stream reduction.
+ * This class compares execution time of loop-based
+ * versus stream-based filtering logic using nanoTime().
  *
  * At this stage, the application:
- * 
- * - Reuses the list of bogies
- * - Converts list into stream
- * - Applies map() to extract capacity values
- * - Uses reduce() to sum capacities
- * - Displays total seating capacity
+ * - Creates a list of bogies
+ * - Measures loop execution time
+ * - Measures stream execution time
+ * - Displays both results
  *
- * This maps functional aggregation using Streams.
+ * This maps performance benchmarking using nanoTime().
  *
  * @author B.Sushma Sree
- * @version 10.0
+ * @version 13.0
  */
