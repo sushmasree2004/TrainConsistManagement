@@ -1,56 +1,49 @@
-
+package com.Train;
 
 /*
 
- * Use Case 15: Safe Cargo Assignment Using try-catch-finally
+ * Use Case 17: Sort Bogie Names 
 
  *
  * Description:
  * 
- * This class validates cargo assignment at runtime
- * and handles unsafe assignments gracefully using
- * structured exception handling.
+ * This class sorts bogie type names alphabetically
+ * using Java’s built-in Arrays.sort() method.
  *
  * At this stage, the application:
  * 
- * - Defines a custom runtime exception CargoSafetyException
- * - Attempts cargo assignment
- * - Throws exception if unsafe
- * - Catches exception to display error
- * - Executes finally block for logging
+ * - Creates an array of bogie names
+ * - Calls Arrays.sort() to sort them
+ * - Displays sorted result
  *
 
  *
  * @author B.Sushma Sree
- * @version 15.0
+ * @version 17.0
  */
 
-import java.util.*;
-
-class CargoSafetyException extends RuntimeException 
-{
-    public CargoSafetyException(String message) 
-    {
-        super(message);
-        
-    }
-}
-
+import java.util.Arrays;
 
 public class Main 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
+       
+        System.out.println("UC17 - Sort Bogie Names Using Arrays.sort()");
         
-        System.out.println("UC15 - Safe Cargo Assignment");
-       
 
-        GoodsBogie cylindrical = new GoodsBogie("Cylindrical");
-        cylindrical.assignCargo("Petroleum"); //  safe
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
 
-        GoodsBogie rectangular = new GoodsBogie("Rectangular");
-        rectangular.assignCargo("Petroleum"); //  unsafe
+        System.out.println("Original Bogie Names:");
+        
+        System.out.println(Arrays.toString(bogieNames));
 
-       
+        // Sort using built-in Arrays.sort()
+        Arrays.sort(bogieNames);
+
+        System.out.println("\nSorted Bogie Names (Alphabetical):");
+        System.out.println(Arrays.toString(bogieNames));
+
+      
     }
 }

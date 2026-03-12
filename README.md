@@ -1,25 +1,21 @@
-
 /*
 
- * Use Case 15: Safe Cargo Assignment Using try-catch-finally
+ * Use Case 17: Sort Bogie Names 
 
  *
  * Description:
  * 
- * This class validates cargo assignment at runtime
- * and handles unsafe assignments gracefully using
- * structured exception handling.
+ * This class sorts bogie type names alphabetically
+ * using Java’s built-in Arrays.sort() method.
  *
  * At this stage, the application:
  * 
- * - Defines a custom runtime exception CargoSafetyException
- * - Attempts cargo assignment
- * - Throws exception if unsafe
- * - Catches exception to display error
- * - Executes finally block for logging
+ * - Creates an array of bogie names
+ * - Calls Arrays.sort() to sort them
+ * - Displays sorted result
  *
 
  *
  * @author B.Sushma Sree
- * @version 15.0
+ * @version 17.0
  */
