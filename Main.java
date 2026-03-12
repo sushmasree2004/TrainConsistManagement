@@ -1,78 +1,62 @@
 
 
 /*
- * ============================================================
- * Use Case 13: Performance Comparison (Loops vs Streams)
- * ============================================================
+ 
+ * Use Case 14: Handle Invalid Bogie Capacity (Custom Exception)
+
  *
  * Description:
- * This class compares execution time of loop-based
- * versus stream-based filtering logic using nanoTime().
+ * 
+ * This class prevents invalid passenger bogies from being
+ * created by enforcing capacity rules with a custom exception.
  *
  * At this stage, the application:
- * - Creates a list of bogies
- * - Measures loop execution time
- * - Measures stream execution time
- * - Displays both results
+ * 
+ * - Defines a custom exception InvalidCapacityException
+ * - Validates capacity inside Bogie constructor
+ * - Throws exception if capacity ≤ 0
+ * - Ensures only valid bogies are added
  *
- * This maps performance benchmarking using nanoTime().
+
  *
  * @author B.Sushma Sree
- * @version 13.0
+ * @version 14.0
  */
 
-import java.util.*;
-import java.util.stream.*;
 
+import java.util.*;
+
+class InvalidCapacityException extends Exception 
+{
+    public InvalidCapacityException(String message) 
+    {
+        super(message);
+    }
+}
 
 
 public class Main 
 {
     public static void main(String[] args) 
     {
-        List<Bogie> bogies = Arrays.asList(
-            new Bogie("Sleeper", 72),
-            new Bogie("AC Chair", 56),
-            new Bogie("First Class", 24),
-            new Bogie("Sleeper", 70),
-            new Bogie("AC Chair", 60)
-        );
+        System.out.println("UC14 - Handle Invalid Bogie Capacity");
+  
 
-
-        System.out.println("UC13 - Performance Comparison (Loops vs Streams)");
-        
-
-        // Loop-based filtering
-        
-        long loopStart = System.nanoTime();
-        
-        List<Bogie> loopFiltered = new ArrayList<>();
-        
-        for (Bogie b : bogies) 
+        try 
         {
-            if (b.capacity > 60) 
-            {
-                loopFiltered.add(b);
-            }
+            Bogie b1 = new Bogie("Sleeper", 72);
+            System.out.println("Created Bogie: " + b1);
+
+            // This will throw the custom exception
+            Bogie b2 = new Bogie("AC Chair", 0);
+            System.out.println("Created Bogie: " + b2);
+
+        } 
+        catch (InvalidCapacityException e) 
+        {
+            System.out.println("Error: " + e.getMessage());
         }
-        
-        long loopEnd = System.nanoTime();
-        
-        long loopTime = loopEnd - loopStart;
 
-        // Stream-based filtering
-        
-        long streamStart = System.nanoTime();
-        
-        List<Bogie> streamFiltered = bogies.stream()
-            .filter(b -> b.capacity > 60)
-            .collect(Collectors.toList());
-        
-        long streamEnd = System.nanoTime();
-        long streamTime = streamEnd - streamStart;
-
-        System.out.println("Loop Execution Time (ns): " + loopTime);
-        System.out.println("Stream Execution Time (ns): " + streamTime);
-
+       
     }
 }

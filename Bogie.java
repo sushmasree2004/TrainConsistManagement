@@ -1,21 +1,23 @@
-package com.Train;
 
-public class Bogie 
+class Bogie 
 {
-	String name;
-	int capacity;
-	
-	public Bogie(String name, int capacity)
-	{
-		
-		this.name = name;
-		this.capacity = capacity;
-	}
-	public String toString() 
-	{
-        return name + " --> " + capacity;
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) throws InvalidCapacityException 
+    {
+        if (capacity <= 0) 
+        {
+            throw new InvalidCapacityException("Capacity must be greater than zero");
+        }
         
-	}
-    
-	
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() 
+    {
+        return name + " -> " + capacity;
+    }
 }

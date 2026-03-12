@@ -1,20 +1,22 @@
 /*
-
- * Use Case 13: Performance Comparison (Loops vs Streams)
+ 
+ * Use Case 14: Handle Invalid Bogie Capacity (Custom Exception)
 
  *
  * Description:
- * This class compares execution time of loop-based
- * versus stream-based filtering logic using nanoTime().
+ * 
+ * This class prevents invalid passenger bogies from being
+ * created by enforcing capacity rules with a custom exception.
  *
  * At this stage, the application:
- * - Creates a list of bogies
- * - Measures loop execution time
- * - Measures stream execution time
- * - Displays both results
+ * 
+ * - Defines a custom exception InvalidCapacityException
+ * - Validates capacity inside Bogie constructor
+ * - Throws exception if capacity ≤ 0
+ * - Ensures only valid bogies are added
  *
- * This maps performance benchmarking using nanoTime().
+
  *
  * @author B.Sushma Sree
- * @version 13.0
+ * @version 14.0
  */
