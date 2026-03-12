@@ -1,25 +1,23 @@
-
 /*
 
- * Use Case 15: Safe Cargo Assignment Using try-catch-finally
+ * Use Case 19: Binary Search for Bogie ID
 
  *
  * Description:
  * 
- * This class validates cargo assignment at runtime
- * and handles unsafe assignments gracefully using
- * structured exception handling.
+ * This class searches for a specific bogie ID
+ * in a sorted list using Binary Search.
  *
  * At this stage, the application:
  * 
- * - Defines a custom runtime exception CargoSafetyException
- * - Attempts cargo assignment
- * - Throws exception if unsafe
- * - Catches exception to display error
- * - Executes finally block for logging
+ * - Creates an array of bogie IDs
+ * - Sorts the array
+ * - Accepts a search key
+ * - Applies binary search logic
+ * - Displays result
  *
 
  *
  * @author B.Sushma Sree
- * @version 15.0
+ * @version 19.0
  */
